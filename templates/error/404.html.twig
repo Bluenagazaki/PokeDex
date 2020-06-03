@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Error 404{% endblock %}
+
+{% block body %}
+    <h1>Error 404</h1>
+
+<img src="{{ asset('dist/img/404.png') }}">
+
+    <a href="{{ path('element_index') }}">back to list</a>
+
+{% endblock %}

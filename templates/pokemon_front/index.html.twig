@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pokemon index{% endblock %}
+
+{% block body %}
+    <h1>Pokemon index</h1>
+    {% if app.request.get('_route') == "pokemon_front_indexByElement" %}
+    <a class="btn btn-primary" href="{{ path('pokemon_front_index') }}">&#60; back to list</a>
+   {% endif %}
+    <table class="table">
+        <thead> 
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Element</th>
+                <th>Show</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pokemon in pokemon %}
+            <tr>
+                <td>{{ pokemon.id }}</td>
+                <td>{{ pokemon.name }}</td>
+                <td><a href="{{ path('pokemon_front_indexByElement', {'id': pokemon.element.id}) }}">{{ pokemon.element }}</a></td>
+                <td><a href="{{ path('pokemon_front_show', {'id': pokemon.id}) }}">show</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
